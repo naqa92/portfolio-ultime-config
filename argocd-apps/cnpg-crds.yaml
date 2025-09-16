@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg-crds
+  namespace: argocd
+  annotations:
+    description: "CRDs pour Cluster PostgreSQL"
+spec:
+  project: default
+  source:
+    repoURL: https://cloudnative-pg.github.io/charts
+    targetRevision: "0.26.0"
+    chart: cloudnative-pg
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-cnpg
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
