@@ -6,6 +6,7 @@ spec:
   instances: 2
   storage:
     size: 5G
+    storageClass: gp2 # Storage Class du provisioner aws-ebs
   bootstrap:
     initdb:
       database: todolist
