@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     path: apps/cnpg/
-    repoURL: https://gitlab.com/naqa92/argocd-infra.git
+    repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
