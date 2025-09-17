@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+  namespace: argocd
+  annotations:
+    description: "Gestion des enregistrements DNS Route 53"
+spec:
+  project: default
+  sources:
+    - repoURL: "https://kubernetes-sigs.github.io/external-dns/"
+      targetRevision: "1.19.0"
+      chart: external-dns
+      helm:
+        valueFiles:
+          - $values/values/external-dns-values.yaml
+    - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
+      targetRevision: main
+      ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: external-dns
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
