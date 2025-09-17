@@ -13,7 +13,3 @@ spec:
           route53:
             region: eu-west-3
             hostedZoneID: Z075458018F27SBDB41PA # Zone ID Route 53
-            auth:
-              kubernetes:
-                serviceAccountRef:
-                  name: "cert-manager" # ServiceAccount créé par cert-manager / Pod Identity géré via module Terraform
