@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager-sync
+  namespace: argocd
+  annotations:
+    description: "Synchronisation automatique des certificats cert-manager avec ACM"
+spec:
+  project: default
+  source:
+    path: apps/cert-manager-sync/
+    repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - ../../values/cert-manager-sync-values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-certmanager
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
