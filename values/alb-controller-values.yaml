@@ -3,8 +3,8 @@ serviceAccount:
   create: true
   name: aws-load-balancer-controller
 region: eu-west-3
-defaultTargetType: ip
+defaultTargetType: ip # Ciblage direct des IPs de pods
 defaultTags:
-  alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=120
+  alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=120 # Sync avec terminationGracePeriodSeconds
 vpcTags:
-  Name: "eks-cluster"
+  Name: "eks-cluster" # Permet de récupérer vpcID automatiquement
