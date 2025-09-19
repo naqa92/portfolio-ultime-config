@@ -7,13 +7,16 @@ metadata:
     description: "Gestion des enregistrements DNS Route 53"
 spec:
   project: default
-  source:
-    repoURL: "https://kubernetes-sigs.github.io/external-dns/"
-    targetRevision: "1.19.0"
-    chart: external-dns
-    helm:
-      valueFiles:
-        - ../values/external-dns-values.yaml
+  sources:
+    - repoURL: "https://kubernetes-sigs.github.io/external-dns/"
+      targetRevision: "1.19.0"
+      chart: external-dns
+      helm:
+        valueFiles:
+          - $values/values/external-dns-values.yaml
+    - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
+      targetRevision: main
+      ref: values
   destination:
     server: "https://kubernetes.default.svc"
     namespace: external-dns

@@ -6,13 +6,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://aws.github.io/eks-charts
-    chart: aws-load-balancer-controller
-    targetRevision: 1.13.4
-    helm:
-      valueFiles:
-        - ../values/alb-controller-values.yaml
+  sources:
+    - repoURL: https://aws.github.io/eks-charts
+      chart: aws-load-balancer-controller
+      targetRevision: 1.13.4
+      helm:
+        valueFiles:
+          - $values/values/alb-controller-values.yaml
+    - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
+      targetRevision: main
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-alb
