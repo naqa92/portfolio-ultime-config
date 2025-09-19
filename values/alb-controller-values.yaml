@@ -9,3 +9,4 @@ defaultTags:
 vpcTags:
   Environment: "production"
   Terraform: "true"
+  kubernetes.io/cluster/eks-cluster: "shared"
