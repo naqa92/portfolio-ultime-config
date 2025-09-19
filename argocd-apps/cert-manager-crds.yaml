@@ -13,7 +13,7 @@ spec:
     chart: cert-manager
     helm:
       valueFiles:
-        - ../../values/cert-manager-values.yaml
+        - ../values/cert-manager-values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-certmanager

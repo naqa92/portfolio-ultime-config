@@ -13,7 +13,7 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-        - ../../values/cert-manager-sync-values.yaml
+        - ../values/cert-manager-sync-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-certmanager

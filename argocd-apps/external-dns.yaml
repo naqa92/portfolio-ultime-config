@@ -13,7 +13,7 @@ spec:
     chart: external-dns
     helm:
       valueFiles:
-        - ../../values/external-dns-values.yaml
+        - ../values/external-dns-values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: external-dns
