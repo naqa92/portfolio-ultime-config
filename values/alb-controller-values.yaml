@@ -7,4 +7,7 @@ defaultTargetType: ip
 defaultTags:
   alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=120
 vpcTags:
+  Name: "eks-cluster"
+  Environment: "production"
+  Terraform: "true"
   kubernetes.io/cluster/eks-cluster: "shared"
