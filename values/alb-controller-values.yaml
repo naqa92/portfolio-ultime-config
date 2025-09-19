@@ -1,0 +1,11 @@
+clusterName: eks-cluster
+serviceAccount:
+  create: true
+  name: aws-load-balancer-controller
+region: eu-west-3
+defaultTargetType: ip
+defaultTags:
+  alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=120
+vpcTags:
+  Environment: "production"
+  Terraform: "true"
