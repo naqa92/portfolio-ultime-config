@@ -8,8 +8,8 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: "ghcr.io/securecodebox/helm"
-      targetRevision: latest
+    - repoURL: "oci://ghcr.io/securecodebox/helm"
+      targetRevision: v3.1.0-alpha1
       chart: auto-discovery-kubernetes
       helm:
         valueFiles:

@@ -8,8 +8,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "ghcr.io/securecodebox/helm"
-    targetRevision: latest
+    repoURL: "oci://ghcr.io/securecodebox/helm"
+    targetRevision: v3.1.0-alpha1
     chart: zap-automation-framework
   destination:
     server: https://kubernetes.default.svc
