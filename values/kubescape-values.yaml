@@ -1,0 +1,4 @@
+clusterName: eks-cluster
+capabilities:
+  continuousScan: enable
+  networkPolicyService: enable

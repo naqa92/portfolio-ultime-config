@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubescape
+  namespace: argocd
+  annotations:
+    description: "Outil pour la sécurité et la conformité des clusters Kubernetes"
+spec:
+  project: default
+  sources:
+    - repoURL: https://kubescape.github.io/helm-charts/
+      targetRevision: "1.8.1"
+      chart: kubescape-operator
+      helm:
+        valueFiles:
+          - $values/values/kubescape-values.yaml
+    - repoURL: https://github.com/naqa92/portfolio-ultime-config.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: kubescape
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
