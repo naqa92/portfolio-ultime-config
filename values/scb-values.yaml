@@ -1,0 +1,11 @@
+serviceAccount:
+  name: securecodebox
+
+minio:
+  enabled: false
+
+s3:
+  enabled: true
+  endpoint: "s3.eu-west-3.amazonaws.com"
+  bucket: "portfolio-ultime-securecodebox"
+  region: "eu-west-3"

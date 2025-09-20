@@ -1,0 +1,12 @@
+config:
+  serviceAutoDiscovery:
+    enabled: true
+    namespace: # vide = toutes les namespaces
+    targetNamespaces:
+      - demo
+    scan:
+      scanType: "zap-automation-framework"
+      schedule: "*/5 * * * *" # cron: toutes les 5 minutes
+      parameters:
+        - "-autorun"
+      # options pour le ConfigMap template (URL target, etc.) à adapter

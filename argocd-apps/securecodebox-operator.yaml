@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: securecodebox-operator
+  namespace: argocd
+  annotations:
+    description: "secureCodeBox operator pour l'automatisation des tests de sécurité"
+spec:
+  project: default
+  sources:
+    - repoURL: "ghcr.io/securecodebox/helm"
+      targetRevision: latest
+      chart: operator
+      helm:
+        valueFiles:
+          - $values/values/scb-values.yaml
+    - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: securecodebox-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

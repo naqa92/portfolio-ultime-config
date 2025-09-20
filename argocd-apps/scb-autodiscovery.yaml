@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: scb-autodiscovery
+  namespace: argocd
+  annotations:
+    description: "secureCodeBox AutoDiscovery pour la détection automatique des services"
+spec:
+  project: default
+  sources:
+    - repoURL: "ghcr.io/securecodebox/helm"
+      targetRevision: latest
+      chart: auto-discovery-kubernetes
+      helm:
+        valueFiles:
+          - $values/values/autodiscovery-values.yaml
+    - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: securecodebox-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
