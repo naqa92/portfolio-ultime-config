@@ -1,22 +1,13 @@
 config:
   serviceAutoDiscovery:
     enabled: true
-    targetNamespaces:
-      - demo
     scanConfigs:
       - scanType: "zap-automation-framework"
-        repeatInterval: "5m" # Intervalle entre chaque scan
+        name: "zap"
+        repeatInterval: "168h" # 1x/semaine (valeur par défaut)
+        parameters:
+          - "-autorun"
+          - "/home/securecodebox/scb-automation/automation.yaml" # mountPath de la ConfigMap auto-générée (valeur par défaut)
         env:
           - name: TARGET_URL
             value: "http://todolist.demo.svc.cluster.local:5000"
-        parameters:
-          - "-autorun"
-          - "/home/securecodebox/scb-automation/automation.yaml"
-        volumeMounts:
-          - name: zap-config
-            mountPath: /home/securecodebox/scb-automation/automation.yaml
-            subPath: automation.yaml
-        volumes:
-          - name: zap-config
-            configMap:
-              name: zap-automation-framework-baseline-config # ConfigMap auto-générée
