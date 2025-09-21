@@ -13,7 +13,7 @@ spec:
     chart: zap-automation-framework
   destination:
     server: https://kubernetes.default.svc
-    namespace: securecodebox-system
+    namespace: demo # namespace où les scans seront lancés
   syncPolicy:
     automated:
       prune: true
