@@ -1,5 +1,5 @@
 serviceAccount:
-  name: securecodebox
+  name: securecodebox-operator
 
 minio:
   enabled: false
