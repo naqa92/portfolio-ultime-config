@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "oci://ghcr.io/securecodebox/helm/operator"
+    repoURL: "oci://ghcr.io/securecodebox/helm/zap-automation-framework"
     targetRevision: 5.0.0
     chart: zap-automation-framework
   destination:
