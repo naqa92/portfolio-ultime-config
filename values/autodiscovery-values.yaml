@@ -4,9 +4,9 @@ config:
     namespace: # vide = toutes les namespaces
     targetNamespaces:
       - demo
-    scan:
+    scanConfig:
+      repeatInterval: "5m" # Intervalle entre chaque scan
       scanType: "zap-automation-framework"
-      schedule: "*/5 * * * *" # cron: toutes les 5 minutes
       env:
         - name: TARGET_URL
           value: "http://todolist.demo.svc.cluster.local:5000"
@@ -20,4 +20,4 @@ config:
       volumes:
         - name: zap-config
           configMap:
-            name: zap-automation-framework-baseline-config
+            name: zap-automation-framework-baseline-config # ConfigMap auto-générée
