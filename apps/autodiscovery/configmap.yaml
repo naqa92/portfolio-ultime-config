@@ -10,16 +10,15 @@ data:
         - name: passive-config
           urls: ["${TARGET_URL}"] # dynamique grâce à l'env var
     jobs:
+      - type: spider # DAST Passif
+        parameters:
+          context: passive-config
+          maxDuration: 2 # attendre max 2 min que le spider ait fini
       - type: passiveScan-wait # Scan sans spider et activeScan pour éviter toute injection
         parameters:
           maxDuration: 5 # attendre max 5 min que les alertes passives soient générées
       - type: report
         parameters:
-          template: modern # traditional-html, traditional-pdf, modern (html), json, sarif-json, md, wiki
-          reportDir: /home/securecodebox/
-          reportFile: zap-results.html
-      - type: report
-        parameters:
-          template: traditional-xml # il faut garder xml pour que le parser fonctionne (paramètre par défaut)
+          template: traditional-xml # traditional-html, traditional-pdf, modern (html), json, sarif-json, md, wiki (garder xml pour le parser)
           reportDir: /home/securecodebox/
           reportFile: zap-results.xml
