@@ -22,4 +22,4 @@ spec:
       - CreateNamespace=true
     managedNamespaceMetadata:
       annotations:
-        auto-discovery.securecodebox.io/enabled: true
+        auto-discovery.securecodebox.io/enabled: "true"
