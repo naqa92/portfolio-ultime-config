@@ -17,6 +17,7 @@ spec:
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
       targetRevision: main
       ref: values
+      path: apps/autodiscovery/ # ArgoCD va compiler les deux sources et reconciler l’ensemble. (values + configMap)
   destination:
     server: https://kubernetes.default.svc
     namespace: securecodebox-system

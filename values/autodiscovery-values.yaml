@@ -3,19 +3,18 @@ config:
     enabled: true
     scanConfigs:
       - scanType: "zap-automation-framework"
-        name: "zap"
-        repeatInterval: "168h" # 1x/semaine (valeur par défaut)
+        name: "zap-passive"
+        repeatInterval: "168h" # 1x/semaine
         parameters:
           - "-autorun"
-          - "/home/securecodebox/scb-automation/automation.yaml" # mountPath de la ConfigMap auto-générée (valeur par défaut)
+          - "/home/securecodebox/scb-automation/automation.yaml" # mountPath de la ConfigMap
         env:
           - name: TARGET_URL
             value: "http://todolist.demo.svc.cluster.local:5000"
         volumeMounts:
-          - name: zap-config
-            mountPath: /home/securecodebox/scb-automation/automation.yaml
-            subPath: automation.yaml
+          - name: zap-passive-automation
+            mountPath: /home/securecodebox/scb-automation
         volumes:
-          - name: zap-config
+          - name: zap-passive-automation
             configMap:
-              name: zap-automation-framework-baseline-config # ConfigMap auto-générée
+              name: zap-automation-framework-passive-config

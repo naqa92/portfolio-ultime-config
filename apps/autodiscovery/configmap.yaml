@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zap-automation-framework-passive-config
+  namespace: demo
+data:
+  automation.yaml: |-
+    env:
+      contexts:
+        - name: passive-config
+          urls: ["${TARGET_URL}"] # dynamique grâce à l'env var
+    jobs:
+      - type: passiveScan-wait # Scan sans spider et activeScan pour éviter toute injection
+        parameters:
+          maxDuration: 5 # attendre max 5 min que les alertes passives soient générées
+      - type: report
+        parameters:
+          template: modern # traditional-xml, traditional-html, traditional-pdf, modern (html), json, sarif-json, md, wiki
+          reportDir: /home/securecodebox/
+          reportFile: zap-results
