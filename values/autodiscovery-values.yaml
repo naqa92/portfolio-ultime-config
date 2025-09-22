@@ -13,7 +13,8 @@ config:
             value: "http://todolist.demo.svc.cluster.local:5000"
         volumeMounts:
           - name: zap-passive-automation
-            mountPath: /home/securecodebox/scb-automation
+            mountPath: /home/securecodebox/scb-automation/automation.yaml
+            subPath: automation.yaml
         volumes:
           - name: zap-passive-automation
             configMap:
