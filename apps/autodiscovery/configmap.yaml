@@ -15,6 +15,11 @@ data:
           maxDuration: 5 # attendre max 5 min que les alertes passives soient générées
       - type: report
         parameters:
-          template: traditional-xml # traditional-html, traditional-pdf, modern (html), json, sarif-json, md, wiki (il faut garder xml et créer un autre type report)
+          template: modern # traditional-html, traditional-pdf, modern (html), json, sarif-json, md, wiki
           reportDir: /home/securecodebox/
-          reportFile: zap-results
+          reportFile: zap-results.html
+      - type: report
+        parameters:
+          template: traditional-xml # il faut garder xml pour que le parser fonctionne (paramètre par défaut)
+          reportDir: /home/securecodebox/
+          reportFile: zap-results.xml
