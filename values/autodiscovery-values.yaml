@@ -11,3 +11,11 @@ config:
         env:
           - name: TARGET_URL
             value: "http://todolist.demo.svc.cluster.local:5000"
+        volumeMounts:
+          - name: zap-config
+            mountPath: /home/securecodebox/scb-automation/automation.yaml
+            subPath: automation.yaml
+        volumes:
+          - name: zap-config
+            configMap:
+              name: zap-automation-framework-baseline-config # ConfigMap auto-générée
