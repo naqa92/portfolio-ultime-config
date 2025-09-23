@@ -1,5 +1,8 @@
 terminationGracePeriodSeconds: 120 # synchronisée avec deregistration_delay (ALB)
 
+image:
+  tag: "0.1.0"
+
 ingress:
   enabled: true
   className: "alb"
