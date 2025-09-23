@@ -1,22 +1,40 @@
+initContainers:
+  - name: fetch-kubescape-plugin
+    image: quay.io/kubescape/headlamp-plugin:0.10.3
+    command: ["/bin/sh", "-c"]
+    args:
+      - cp -r /plugin/* /headlamp/plugins/
+    volumeMounts:
+      - name: plugins
+        mountPath: /headlamp/plugins
+
 headlamp:
   pluginsManager:
-    enabled: true
-    configContent: |
-      plugins:
-        - name: kubescape
-          source: https://artifacthub.io/packages/headlamp/kubescape-headlamp-plugin/headlamp_kubescape
-          version: "0.10.3"
-      installOptions:
-        parallel: true
-        maxConcurrent: 2
-    baseImage: node:lts-alpine
-    version: latest
-    volume:
-      name: plugins
-      emptyDir: {}
-    volumeMount:
-      mountPath: /headlamp/plugins
-      name: plugins
+  enabled: true
+  configContent: |
+    plugins:
+      - name: kubescape
+        source: https://artifacthub.io/packages/headlamp/kubescape-headlamp-plugin/headlamp_kubescape
+        version: "0.10.3"
+    installOptions:
+      parallel: true
+      maxConcurrent: 2
+  baseImage: node:lts-alpine
+  version: latest
+  volume:
+    name: plugins
+    emptyDir: {}
+  volumeMount:
+    mountPath: /headlamp/plugins
+    name: plugins
   config:
-    watchPlugins: true # active la surveillance pour recharger automatiquement les plugins
+    watchPlugins: true
     pluginsDir: "/headlamp/plugins"
+
+extraVolumes:
+  - name: plugins
+    emptyDir: {}
+
+extraVolumeMounts:
+  - name: plugins
+    mountPath: /headlamp/plugins
