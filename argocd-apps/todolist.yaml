@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: "oci://ghcr.io/naqa92/charts"
-      targetRevision: 0.1.0
+      targetRevision: 0.1.3
       chart: todolist
       helm:
         valueFiles:
