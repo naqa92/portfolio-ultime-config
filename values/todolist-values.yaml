@@ -2,6 +2,8 @@ terminationGracePeriodSeconds: 120 # synchronisée avec deregistration_delay (AL
 
 image:
   tag: "0.1.0"
+  imagePullSecrets:
+    - name: ghcr-registry
 
 ingress:
   enabled: true
