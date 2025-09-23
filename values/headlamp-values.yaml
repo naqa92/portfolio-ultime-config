@@ -11,6 +11,12 @@ headlamp:
         maxConcurrent: 2
     baseImage: node:lts-alpine
     version: latest
+    volume:
+      name: plugins
+      emptyDir: {}
+    volumeMount:
+      mountPath: /headlamp/plugins
+      name: plugins
   config:
     watchPlugins: true # active la surveillance pour recharger automatiquement les plugins
-    pluginsDir: "/build/plugins"
+    pluginsDir: "/headlamp/plugins"
