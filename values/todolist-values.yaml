@@ -1,0 +1,18 @@
+terminationGracePeriodSeconds: 120 # synchronisée avec deregistration_delay (ALB)
+
+ingress:
+  enabled: true
+  className: "alb"
+  host: app.ndebaa.com
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443},{"HTTP":80}]'
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    external-dns.alpha.kubernetes.io/hostname: app.ndebaa.com
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/secret-template: |
+      {"annotations": {"cert-manager-sync.lestak.sh/sync-enabled":"true", "cert-manager-sync.lestak.sh/acm-enabled":"true", "cert-manager-sync.lestak.sh/acm-region": "eu-west-3"}}
+  tls:
+    - hosts:
+        - app.ndebaa.com
+      secretName: letsencrypt-app
