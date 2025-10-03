@@ -9,13 +9,13 @@ spec:
   project: default
   sources:
     - repoURL: "https://charts.jetstack.io"
-      targetRevision: "1.18.2"
+      targetRevision: HEAD
       chart: cert-manager
       helm:
         valueFiles:
           - $values/values/cert-manager-values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-      targetRevision: main
+      targetRevision: HEAD
       ref: values
   destination:
     server: "https://kubernetes.default.svc"

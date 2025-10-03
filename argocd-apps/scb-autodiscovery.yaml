@@ -9,13 +9,13 @@ spec:
   project: default
   sources:
     - repoURL: "oci://ghcr.io/securecodebox/helm/auto-discovery-kubernetes"
-      targetRevision: 5.0.0
+      targetRevision: HEAD
       chart: auto-discovery-kubernetes
       helm:
         valueFiles:
           - $values/values/autodiscovery-values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-      targetRevision: main
+      targetRevision: HEAD
       ref: values
       path: apps/autodiscovery/ # ArgoCD va compiler les deux sources et reconciler l’ensemble. (values + configMap)
   destination:

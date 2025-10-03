@@ -15,7 +15,7 @@ spec:
         valueFiles:
           - $values/values/cert-manager-sync-values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-      targetRevision: main
+      targetRevision: HEAD
       ref: values
   destination:
     server: https://kubernetes.default.svc

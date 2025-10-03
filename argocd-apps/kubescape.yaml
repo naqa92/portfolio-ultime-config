@@ -9,13 +9,13 @@ spec:
   project: default
   sources:
     - repoURL: https://kubescape.github.io/helm-charts/
-      targetRevision: "1.29.6"
+      targetRevision: HEAD
       chart: kubescape-operator
       helm:
         valueFiles:
           - $values/values/kubescape-values.yaml
     - repoURL: https://github.com/naqa92/portfolio-ultime-config.git
-      targetRevision: main
+      targetRevision: HEAD
       ref: values
   destination:
     server: "https://kubernetes.default.svc"

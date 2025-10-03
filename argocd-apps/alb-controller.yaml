@@ -9,12 +9,12 @@ spec:
   sources:
     - repoURL: https://aws.github.io/eks-charts
       chart: aws-load-balancer-controller
-      targetRevision: 1.13.4
+      targetRevision: HEAD
       helm:
         valueFiles:
           - $values/values/alb-controller-values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-      targetRevision: main
+      targetRevision: HEAD
       ref: values
   destination:
     server: https://kubernetes.default.svc

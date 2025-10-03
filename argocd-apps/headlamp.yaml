@@ -7,13 +7,13 @@ spec:
   project: default
   sources:
     - repoURL: "https://kubernetes-sigs.github.io/headlamp/"
-      targetRevision: "0.35.0"
+      targetRevision: HEAD
       chart: headlamp
       helm:
         valueFiles:
           - $values/values/headlamp-values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-      targetRevision: main
+      targetRevision: HEAD
       ref: values
   destination:
     server: https://kubernetes.default.svc

@@ -9,13 +9,13 @@ spec:
   project: default
   sources:
     - repoURL: "oci://ghcr.io/naqa92/charts/todolist"
-      targetRevision: "0.1.10"
+      targetRevision: HEAD
       chart: todolist
       helm:
         valueFiles:
           - $values/values/todolist-values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-      targetRevision: main
+      targetRevision: HEAD
       ref: values
   destination:
     server: https://kubernetes.default.svc
