@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: atlas-operator
+  namespace: argocd
+  annotations:
+    description: "Atlas operator pour la gestion des migrations de base de données"
+spec:
+  project: default
+  source:
+    repoURL: "oci://ghcr.io/ariga/charts"
+    targetRevision: HEAD
+    chart: atlas-operator
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: atlas-operator
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
