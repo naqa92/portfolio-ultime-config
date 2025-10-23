@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: "oci://ghcr.io/securecodebox/helm/operator"
-      targetRevision: "*"
+      targetRevision: "5.1.0"
       chart: operator
       helm:
         valueFiles:

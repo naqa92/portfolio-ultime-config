@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: "oci://ghcr.io/ariga/charts"
-    targetRevision: "*"
+    targetRevision: "0.7.11"
     chart: atlas-operator
   destination:
     server: https://kubernetes.default.svc

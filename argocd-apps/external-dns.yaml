@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: "https://kubernetes-sigs.github.io/external-dns/"
-      targetRevision: "*"
+      targetRevision: "1.19.0"
       chart: external-dns
       helm:
         valueFiles:

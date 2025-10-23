@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: https://kubescape.github.io/helm-charts/
-      targetRevision: "*"
+      targetRevision: "1.29.10"
       chart: kubescape-operator
       helm:
         valueFiles:

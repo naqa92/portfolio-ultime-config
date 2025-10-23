@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: "oci://ghcr.io/securecodebox/helm/auto-discovery-kubernetes"
-      targetRevision: "*"
+      targetRevision: "5.1.0"
       chart: auto-discovery-kubernetes
       helm:
         valueFiles:

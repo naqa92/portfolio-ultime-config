@@ -9,7 +9,7 @@ spec:
   sources:
     - repoURL: https://aws.github.io/eks-charts
       chart: aws-load-balancer-controller
-      targetRevision: "*"
+      targetRevision: "1.14.1"
       helm:
         valueFiles:
           - $values/values/alb-controller-values.yaml
