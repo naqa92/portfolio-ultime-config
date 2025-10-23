@@ -9,13 +9,13 @@ spec:
   project: default
   sources:
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-      targetRevision: HEAD
+      targetRevision: main
       path: apps/cert-manager-sync/
       helm:
         valueFiles:
           - $values/values/cert-manager-sync-values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-      targetRevision: HEAD
+      targetRevision: main
       ref: values
   destination:
     server: https://kubernetes.default.svc

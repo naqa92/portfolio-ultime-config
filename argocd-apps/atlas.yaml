@@ -10,7 +10,7 @@ spec:
   source:
     path: apps/atlas/
     repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-    targetRevision: HEAD
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: "demo"

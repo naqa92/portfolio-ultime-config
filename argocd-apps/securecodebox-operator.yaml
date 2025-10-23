@@ -9,13 +9,13 @@ spec:
   project: default
   sources:
     - repoURL: "oci://ghcr.io/securecodebox/helm/operator"
-      targetRevision: HEAD
+      targetRevision: "*"
       chart: operator
       helm:
         valueFiles:
           - $values/values/scb-values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-      targetRevision: HEAD
+      targetRevision: main
       ref: values
   destination:
     server: https://kubernetes.default.svc

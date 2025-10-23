@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: "oci://ghcr.io/securecodebox/helm/zap-automation-framework"
-    targetRevision: HEAD
+    targetRevision: "*"
     chart: zap-automation-framework
   destination:
     server: https://kubernetes.default.svc
