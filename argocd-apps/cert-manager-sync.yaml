@@ -11,9 +11,9 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-      targetRevision: main
-      path: apps/cert-manager-sync/
+    - repoURL: "oci://ghcr.io/naqa92/charts/cert-manager-sync"
+      targetRevision: 0.1.0
+      chart: cert-manager-sync
       helm:
         valueFiles:
           - $values/values/cert-manager-sync-values.yaml
