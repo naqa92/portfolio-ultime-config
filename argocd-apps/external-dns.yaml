@@ -5,6 +5,9 @@ metadata:
   namespace: argocd
   annotations:
     description: "Gestion des enregistrements DNS Route 53"
+  finalizers:
+    # Foreground cascading deletion: supprime les ressources DNS avant l'app
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   sources:

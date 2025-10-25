@@ -5,6 +5,9 @@ metadata:
   namespace: argocd
   annotations:
     description: "Synchronisation automatique des certificats cert-manager avec ACM"
+  finalizers:
+    # Foreground cascading deletion: supprime les certificats ACM avant l'app
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   sources:

@@ -4,6 +4,9 @@ kind: Application
 metadata:
   name: aws-load-balancer-controller
   namespace: argocd
+  finalizers:
+    # Foreground cascading deletion: supprime les ressources avant l'app
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   sources:
