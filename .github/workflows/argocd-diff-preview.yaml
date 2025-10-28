@@ -24,10 +24,21 @@ jobs:
           ref: main
           path: main
 
-      - name: Run ArgoCD Diff Preview
-        uses: dag-andersen/argocd-diff-preview@main
-        with:
-          repo: naqa92/portfolio-ultime-config
-          target-branch: ${{ github.head_ref }}
-          base-branch: main
-          argocd-namespace: argocd
+      - name: Generate Diff
+        run: |
+          docker run \
+            --network=host \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -v $(pwd)/main:/base-branch \
+            -v $(pwd)/pull-request:/target-branch \
+            -v $(pwd)/output:/output \
+            -e TARGET_BRANCH=${{ github.head_ref }} \
+            -e REPO=${{ github.repository }} \
+            dagandersen/argocd-diff-preview:v0.1.19
+
+      - name: Post diff as comment
+        run: |
+          gh pr comment ${{ github.event.number }} --repo ${{ github.repository }} --body-file output/diff.md --edit-last || \
+          gh pr comment ${{ github.event.number }} --repo ${{ github.repository }} --body-file output/diff.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
