@@ -1,0 +1,33 @@
+name: ArgoCD Diff Preview
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  diff-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          path: pull-request
+
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+
+      - name: Run ArgoCD Diff Preview
+        uses: dag-andersen/argocd-diff-preview@main
+        with:
+          repo: naqa92/portfolio-ultime-config
+          target-branch: ${{ github.head_ref }}
+          base-branch: main
+          argocd-namespace: argocd
