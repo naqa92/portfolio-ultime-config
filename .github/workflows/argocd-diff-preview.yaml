@@ -34,6 +34,7 @@ jobs:
             -v $(pwd)/output:/output \
             -e TARGET_BRANCH=${{ github.head_ref }} \
             -e REPO=${{ github.repository }} \
+            -e DIFF_IGNORE="(schedule:|checksum/)" \
             dagandersen/argocd-diff-preview:v0.1.19
 
       - name: Post diff as comment
