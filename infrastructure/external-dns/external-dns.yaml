@@ -1,25 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager-crds
+  name: external-dns
   namespace: argocd
   annotations:
-    description: "CRDs pour certificats TLS automatique avec Let's Encrypt"
+    description: "Gestion des enregistrements DNS Route 53"
+    argocd.argoproj.io/sync-wave: "3"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   sources:
-    - repoURL: "https://charts.jetstack.io"
-      targetRevision: "v1.19.1"
-      chart: cert-manager
+    - repoURL: "https://kubernetes-sigs.github.io/external-dns/"
+      targetRevision: "1.19.0"
+      chart: external-dns
       helm:
         valueFiles:
-          - $values/values/cert-manager-values.yaml
+          - $values/infrastructure/external-dns/values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
       targetRevision: main
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: certmanager-system
+    namespace: external-dns
   syncPolicy:
     automated:
       prune: true

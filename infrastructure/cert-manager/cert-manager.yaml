@@ -1,19 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-secrets
+  name: cert-manager
   namespace: argocd
   annotations:
-    description: "Configurations pour la synchronisation automatique des secrets externes"
+    description: "ClusterIssuer pour génération automatique des certificats TLS"
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   project: default
   source:
-    path: apps/external-secrets/
+    path: infrastructure/cert-manager/manifests/
     repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
-    namespace: "" # cluster-wide
+    namespace: certmanager-system
   syncPolicy:
     automated:
       prune: true

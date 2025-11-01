@@ -1,10 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: scb-autodiscovery-crds
+  name: scb-autodiscovery
   namespace: argocd
   annotations:
-    description: "CRDs secureCodeBox AutoDiscovery pour la détection automatique des services"
+    description: "secureCodeBox AutoDiscovery pour la détection automatique des services"
+    argocd.argoproj.io/sync-wave: "6"
 spec:
   project: default
   sources:
@@ -13,7 +14,7 @@ spec:
       chart: auto-discovery-kubernetes
       helm:
         valueFiles:
-          - $values/values/autodiscovery-values.yaml
+          - $values/infrastructure/securecodebox/autodiscovery-values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
       targetRevision: main
       ref: values

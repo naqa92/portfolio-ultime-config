@@ -1,19 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: atlas
+  name: applications
   namespace: argocd
   annotations:
-    description: "Atlas resources pour la gestion des migrations de base de données"
+    description: "App-of-Apps pour les applications (workloads dans le namespace demo)"
 spec:
   project: default
   source:
-    path: apps/atlas/
+    path: applications/
     repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
     targetRevision: main
+    directory:
+      recurse: true
+      include: "**/*.yaml"
+      exclude: "**/manifests/**"
   destination:
     server: https://kubernetes.default.svc
-    namespace: "demo"
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true

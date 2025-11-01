@@ -1,23 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cnpg-crds
+  name: zap-config
   namespace: argocd
   annotations:
-    description: "CRDs pour Cluster PostgreSQL"
+    description: "Configuration ZAP pour autodiscovery (passive scan)"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   source:
-    repoURL: https://cloudnative-pg.github.io/charts
-    targetRevision: "0.26.1"
-    chart: cloudnative-pg
+    path: applications/zap-automation-framework/manifests/
+    repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
-    namespace: cnpg-system
+    namespace: demo
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true

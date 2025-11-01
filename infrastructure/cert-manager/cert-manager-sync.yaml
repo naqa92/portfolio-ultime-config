@@ -5,8 +5,8 @@ metadata:
   namespace: argocd
   annotations:
     description: "Synchronisation automatique des certificats cert-manager avec ACM"
+    argocd.argoproj.io/sync-wave: "3"
   finalizers:
-    # Foreground cascading deletion: supprime les certificats ACM avant l'app
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
@@ -16,7 +16,7 @@ spec:
       chart: cert-manager-sync
       helm:
         valueFiles:
-          - $values/values/cert-manager-sync-values.yaml
+          - $values/infrastructure/cert-manager/cert-manager-sync-values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
       targetRevision: main
       ref: values

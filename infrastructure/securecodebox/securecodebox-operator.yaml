@@ -1,23 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: headlamp
+  name: securecodebox-operator
   namespace: argocd
+  annotations:
+    description: "secureCodeBox operator pour l'automatisation des tests de sécurité"
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   project: default
   sources:
-    - repoURL: "https://kubernetes-sigs.github.io/headlamp/"
-      targetRevision: "0.36.0"
-      chart: headlamp
+    - repoURL: "oci://ghcr.io/securecodebox/helm/operator"
+      targetRevision: "5.1.0"
+      chart: operator
       helm:
         valueFiles:
-          - $values/values/headlamp-values.yaml
+          - $values/infrastructure/securecodebox/values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
       targetRevision: main
       ref: values
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-system
+    namespace: securecodebox-system
   syncPolicy:
     automated:
       prune: true

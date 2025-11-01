@@ -1,25 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: securecodebox-operator
+  name: aws-load-balancer-controller
   namespace: argocd
   annotations:
-    description: "secureCodeBox operator pour l'automatisation des tests de sécurité"
+    description: "AWS Load Balancer Controller pour gérer les ALB"
+    argocd.argoproj.io/sync-wave: "3"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   sources:
-    - repoURL: "oci://ghcr.io/securecodebox/helm/operator"
-      targetRevision: "5.1.0"
-      chart: operator
+    - repoURL: https://aws.github.io/eks-charts
+      chart: aws-load-balancer-controller
+      targetRevision: "1.14.1"
       helm:
         valueFiles:
-          - $values/values/scb-values.yaml
+          - $values/infrastructure/alb-controller/values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
       targetRevision: main
       ref: values
   destination:
     server: https://kubernetes.default.svc
-    namespace: securecodebox-system
+    namespace: alb-system
   syncPolicy:
     automated:
       prune: true

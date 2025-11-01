@@ -1,27 +1,26 @@
-# ArgoCD Application for AWS Load Balancer Controller
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aws-load-balancer-controller
+  name: headlamp
   namespace: argocd
-  finalizers:
-    # Foreground cascading deletion: supprime les ressources avant l'app
-    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    description: "Interface web pour Kubernetes"
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   project: default
   sources:
-    - repoURL: https://aws.github.io/eks-charts
-      chart: aws-load-balancer-controller
-      targetRevision: "1.14.1"
+    - repoURL: "https://kubernetes-sigs.github.io/headlamp/"
+      targetRevision: "0.36.0"
+      chart: headlamp
       helm:
         valueFiles:
-          - $values/values/alb-controller-values.yaml
+          - $values/infrastructure/headlamp/values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
       targetRevision: main
       ref: values
   destination:
     server: https://kubernetes.default.svc
-    namespace: alb-system
+    namespace: kube-system
   syncPolicy:
     automated:
       prune: true

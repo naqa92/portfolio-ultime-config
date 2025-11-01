@@ -5,21 +5,22 @@ metadata:
   namespace: argocd
   annotations:
     description: "Application python Flask de gestion de tâches"
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   project: default
   sources:
     - repoURL: "oci://ghcr.io/naqa92/charts/todolist"
-      targetRevision: "~0.1" # Accepte 0.1.x
+      targetRevision: "main"
       chart: todolist
       helm:
         valueFiles:
-          - $values/values/todolist-values.yaml
+          - $values/applications/todolist/values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
       targetRevision: main
       ref: values
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo # créé par zap-automation-framework
+    namespace: demo
   syncPolicy:
     automated:
       prune: true

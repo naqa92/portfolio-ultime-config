@@ -1,29 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-secrets-crds
+  name: cert-manager-crds
   namespace: argocd
   annotations:
-    description: "CRDs pour la synchronisation automatique des secrets externes"
+    description: "CRDs pour certificats TLS automatique avec Let's Encrypt"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   sources:
-    - repoURL: "https://charts.external-secrets.io"
-      targetRevision: "0.20.3"
-      chart: external-secrets
+    - repoURL: "https://charts.jetstack.io"
+      targetRevision: "v1.19.1"
+      chart: cert-manager
       helm:
         valueFiles:
-          - $values/values/external-secrets-values.yaml
+          - $values/infrastructure/cert-manager/values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
       targetRevision: main
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: external-secrets
+    namespace: certmanager-system
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true # Permet de gérer les annotations trop longues dans les CRDs

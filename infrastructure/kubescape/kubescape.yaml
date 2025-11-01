@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
   annotations:
     description: "Outil pour la sécurité et la conformité des clusters Kubernetes"
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   project: default
   sources:
@@ -13,7 +14,7 @@ spec:
       chart: kubescape-operator
       helm:
         valueFiles:
-          - $values/values/kubescape-values.yaml
+          - $values/infrastructure/kubescape/values.yaml
     - repoURL: https://github.com/naqa92/portfolio-ultime-config.git
       targetRevision: main
       ref: values
