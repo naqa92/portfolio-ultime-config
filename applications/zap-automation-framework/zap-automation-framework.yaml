@@ -4,8 +4,7 @@ metadata:
   name: zap-automation-framework
   namespace: argocd
   annotations:
-    description: "ZAP automation framework pour les tests de sécurité web"
-    argocd.argoproj.io/sync-wave: "1"
+    description: "ZAP Automation Framework pour security testing"
 spec:
   project: default
   source:

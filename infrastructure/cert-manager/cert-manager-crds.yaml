@@ -4,8 +4,7 @@ metadata:
   name: cert-manager-crds
   namespace: argocd
   annotations:
-    description: "CRDs pour certificats TLS automatique avec Let's Encrypt"
-    argocd.argoproj.io/sync-wave: "1"
+    description: "CRDs pour cert-manager"
 spec:
   project: default
   sources:

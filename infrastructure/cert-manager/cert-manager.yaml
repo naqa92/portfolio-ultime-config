@@ -4,8 +4,7 @@ metadata:
   name: cert-manager
   namespace: argocd
   annotations:
-    description: "ClusterIssuer pour génération automatique des certificats TLS"
-    argocd.argoproj.io/sync-wave: "2"
+    description: "Cert-manager pour les certificats SSL/TLS"
 spec:
   project: default
   source:

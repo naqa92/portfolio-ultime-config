@@ -4,8 +4,7 @@ metadata:
   name: securecodebox-operator
   namespace: argocd
   annotations:
-    description: "secureCodeBox operator pour l'automatisation des tests de sécurité"
-    argocd.argoproj.io/sync-wave: "5"
+    description: "SecureCodeBox operator"
 spec:
   project: default
   sources:

@@ -4,8 +4,7 @@ metadata:
   name: todolist
   namespace: argocd
   annotations:
-    description: "Application python Flask de gestion de tâches"
-    argocd.argoproj.io/sync-wave: "5"
+    description: "Application Todolist"
 spec:
   project: default
   sources:

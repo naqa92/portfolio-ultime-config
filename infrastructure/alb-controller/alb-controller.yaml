@@ -5,7 +5,6 @@ metadata:
   namespace: argocd
   annotations:
     description: "AWS Load Balancer Controller pour gérer les ALB"
-    argocd.argoproj.io/sync-wave: "3"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:

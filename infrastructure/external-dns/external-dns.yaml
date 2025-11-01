@@ -5,7 +5,6 @@ metadata:
   namespace: argocd
   annotations:
     description: "Gestion des enregistrements DNS Route 53"
-    argocd.argoproj.io/sync-wave: "3"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:

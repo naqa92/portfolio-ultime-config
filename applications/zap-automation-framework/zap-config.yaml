@@ -4,8 +4,7 @@ metadata:
   name: zap-config
   namespace: argocd
   annotations:
-    description: "Configuration ZAP pour autodiscovery (passive scan)"
-    argocd.argoproj.io/sync-wave: "1"
+    description: "Configuration ZAP pour l'automation security testing"
 spec:
   project: default
   source:
