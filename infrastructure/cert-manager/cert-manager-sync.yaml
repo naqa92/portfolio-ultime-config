@@ -4,6 +4,7 @@ metadata:
   name: cert-manager-sync
   namespace: argocd
   annotations:
+    argocd.argoproj.io/sync-wave: "-1"
     description: "Synchronisation automatique des certificats cert-manager avec ACM"
   finalizers:
     - resources-finalizer.argocd.argoproj.io

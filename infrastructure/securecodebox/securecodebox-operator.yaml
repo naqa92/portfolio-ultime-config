@@ -4,6 +4,7 @@ metadata:
   name: securecodebox-operator
   namespace: argocd
   annotations:
+    argocd.argoproj.io/sync-wave: "-3"
     description: "SecureCodeBox operator"
 spec:
   project: default

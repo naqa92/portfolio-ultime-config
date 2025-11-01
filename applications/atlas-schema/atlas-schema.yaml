@@ -4,6 +4,7 @@ metadata:
   name: atlas-schema
   namespace: argocd
   annotations:
+    argocd.argoproj.io/sync-wave: "2"
     description: "Atlas schema pour la gestion des migrations de base de données"
 spec:
   project: default

@@ -4,6 +4,7 @@ metadata:
   name: cnpg-cluster
   namespace: argocd
   annotations:
+    argocd.argoproj.io/sync-wave: "1"
     description: "Cluster CNPG PostgreSQL pour l'application todolist"
 spec:
   project: default
