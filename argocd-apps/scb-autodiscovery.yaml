@@ -4,23 +4,16 @@ metadata:
   name: scb-autodiscovery
   namespace: argocd
   annotations:
-    description: "secureCodeBox AutoDiscovery pour la détection automatique des services"
+    description: "ConfigMap pour zap-automation-framework"
 spec:
   project: default
-  sources:
-    - repoURL: "oci://ghcr.io/securecodebox/helm/auto-discovery-kubernetes"
-      targetRevision: "5.1.0"
-      chart: auto-discovery-kubernetes
-      helm:
-        valueFiles:
-          - $values/values/autodiscovery-values.yaml
-    - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
-      targetRevision: main
-      ref: values
-      path: apps/autodiscovery/ # ArgoCD va compiler les deux sources et reconciler l'ensemble. (values + configMap)
+  source:
+    path: apps/autodiscovery/
+    repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
-    namespace: securecodebox-system
+    namespace: "demo"
   syncPolicy:
     automated:
       prune: true

@@ -1,27 +1,25 @@
-# ArgoCD Application for AWS Load Balancer Controller
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aws-load-balancer-controller
+  name: scb-autodiscovery-crds
   namespace: argocd
-  finalizers:
-    # Foreground cascading deletion: supprime les ressources avant l'app
-    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    description: "CRDs secureCodeBox AutoDiscovery pour la détection automatique des services"
 spec:
   project: default
   sources:
-    - repoURL: https://aws.github.io/eks-charts
-      chart: aws-load-balancer-controller
-      targetRevision: "1.14.1"
+    - repoURL: "oci://ghcr.io/securecodebox/helm/auto-discovery-kubernetes"
+      targetRevision: "5.1.0"
+      chart: auto-discovery-kubernetes
       helm:
         valueFiles:
-          - $values/values/alb-controller-values.yaml
+          - $values/values/autodiscovery-values.yaml
     - repoURL: "https://github.com/naqa92/portfolio-ultime-config.git"
       targetRevision: main
       ref: values
   destination:
     server: https://kubernetes.default.svc
-    namespace: alb-system
+    namespace: securecodebox-system
   syncPolicy:
     automated:
       prune: true

@@ -13,7 +13,7 @@ spec:
     chart: cloudnative-pg
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-cnpg
+    namespace: cnpg-system
   syncPolicy:
     automated:
       prune: true
