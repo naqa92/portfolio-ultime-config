@@ -10,7 +10,7 @@ spec:
   project: default
   sources:
     - repoURL: "oci://ghcr.io/naqa92/charts/todolist"
-      targetRevision: "main"
+      targetRevision: "latest"
       chart: todolist
       helm:
         valueFiles:
