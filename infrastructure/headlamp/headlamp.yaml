@@ -4,7 +4,6 @@ metadata:
   name: headlamp
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
     description: "Headlamp - Kubernetes dashboard"
 spec:
   project: default

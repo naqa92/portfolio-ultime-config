@@ -4,7 +4,6 @@ metadata:
   name: atlas-operator
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
     description: "Atlas operator pour la gestion des migrations de base de données"
 spec:
   project: default

@@ -4,7 +4,6 @@ metadata:
   name: cert-manager-crds
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "-3"
     description: "CRDs pour cert-manager"
 spec:
   project: default

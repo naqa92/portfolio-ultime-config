@@ -4,7 +4,6 @@ metadata:
   name: kubescape
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
     description: "Kubescape - security scanning tool"
 spec:
   project: default

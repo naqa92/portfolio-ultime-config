@@ -4,7 +4,6 @@ metadata:
   name: todolist
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
     description: "Application Todolist"
 spec:
   project: default

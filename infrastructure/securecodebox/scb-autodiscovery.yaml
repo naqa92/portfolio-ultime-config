@@ -4,7 +4,6 @@ metadata:
   name: scb-autodiscovery
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
     description: "SecureCodeBox autodiscovery"
 spec:
   project: default
